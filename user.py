@@ -1,11 +1,3 @@
-# 9-3. Users: Make a class called User. Create two attributes called first_name
-# and last_name, and then create several other attributes that are typically stored
-# in a user profile. Make a method called describe_user() that prints a summary
-# of the user’s information. Make another method called greet_user() that prints
-# a personalized greeting to the user.
-# Create several instances representing different users, and call both meth-
-# ods for each user.
-
 class User:
     """ Create users for ur site """
     def __init__(self, first_name, last_name, height, weight):
@@ -14,6 +6,7 @@ class User:
         self.height = height
         self.weight = weight
         self.login_attempts = 0
+        self.privileges = Privileges()
     
     def summary(self):
         print(f"Full name: {self.first_name.title()} {self.last_name.title()}")
@@ -34,15 +27,25 @@ class User:
         """ Reset total login attempts to 0 """
         self.login_attempts = 0
 
-new_user = User(first_name = 'romain', last_name = 'gremaud', 
-                height = '5 ft 10 in', weight = '170 lbs')
 
-new_user.summary()
-new_user.greeting()
-new_user.increment_login_attempts()
-new_user.increment_login_attempts()
-new_user.total_logins()
-new_user.reset_login_attempts()
-new_user.total_logins()
-new_user.increment_login_attempts()
-new_user.total_logins()
+class Admin(User):
+    """Adminstrator class for users"""
+    def __init__(self, first_name, last_name, height, weight):
+        super().__init__(first_name, last_name, height, weight)
+        self.privileges = Privileges()
+
+class Privileges():
+    """Store user privileges"""
+    def __init__(self, privileges = ["can add post", "can delete post", "can ban user"]):
+        self.privileges = privileges
+
+    def show_privileges(self):
+        print("User privileges:")
+        for item in self.privileges:
+            print(f"\t- {item}")
+
+new_admin = Admin(first_name = "Whit", last_name = "Gremaud",
+                  height = "5 ft 5 in", weight = '120 lbs')
+
+
+new_admin.privileges.show_privileges()

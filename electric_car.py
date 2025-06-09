@@ -1,41 +1,41 @@
-class Car:
-    """ Build a simple car """
-    
-    def __init__(self, make, model, year):
-        """ Initialize values for car """
-        self.make = make
-        self.model = model
-        self.year = year
-        self.odometer_reading = 0
+"""A set of classes that can be used to represent electric cars."""
 
-    def get_descriptive_name(self):
-        """ Return formatted string for car info """
-        long_name = f"{self.make} {self.model} {self.year}"
-        print(long_name)
+from car import Car
 
-    def read_odomoter(self):
-        """ Function to track miles """
-        print(f"This car has {self.odometer_reading} miles on it")
-    
-    def update_mileage(self, mileage):
-        """ Set odometer"""
-        if self.odometer_reading > mileage:
-            print("You cant roll back an odometer!")
-        else:
-            self.odometer_reading = mileage
-    
-    def increment_miles(self, mileage):
-        """ Increment car mileague """
-        if mileage < 0:
-            print("You cannot remove miles from the car")
-        else:
-            self.odometer_reading += mileage
+class Battery:
+    """Modeling a car batter"""
+
+    def __init__(self, battery_size=40):
+        """Initialize the batter attributes"""
+        self.battery_size = battery_size
+
+    def describe_battery(self):
+        """Show batter size"""
+        print(f"This car has a {self.battery_size}-kWh battery.")
+
+    def upgrade_battery(self):
+        if self.battery_size != 65:
+            self.battery_size = 65
+
+    def get_range(self):
+        """Print a statement about the range this battery provides."""
+        if self.battery_size == 40:
+            range = 150
+        elif self.battery_size == 65:
+            range = 225
+
+        print(f"This car can go about {range} miles on a full charge.")
+        
 
 class ElectricCar(Car):
     """ Creating electric cars to save the planet """
     def __init__(self, make, model, year):
         """ Initialize attributes of a car """
         super().__init__(make, model, year)
+        self.battery = Battery()
     
 electric_car = ElectricCar("Nissan", "Leaf", 2018)
 electric_car.get_descriptive_name()
+electric_car.battery.describe_battery()
+electric_car.battery.upgrade_battery()
+electric_car.battery.describe_battery()
