@@ -1,6 +1,6 @@
-class Restaurant:
-    """ Find a delicious restaurant to eat at """
+"""Class to create a restaurant"""
 
+class Restaurant:
     def __init__(self, name, type):
         """ Initialize values for restaurant """
         self.name = name
@@ -34,12 +34,3 @@ class Restaurant:
         """ Print number of customers served """
         print(f"This restaurant has served {self.customers_served} total customers")
     
-    
-
-new_place = Restaurant("Bella", "Italian")
-new_place.describe()
-new_place.open_restaurant()
-new_place.set_number_served(10)
-new_place.customers()
-new_place.increment_number_served(1000)
-new_place.customers()
