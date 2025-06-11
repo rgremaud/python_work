@@ -4,8 +4,8 @@ from user import User
 
 class Admin(User):
     """Adminstrator class for users"""
-    def __init__(self, first_name, last_name, height, weight):
-        super().__init__(first_name, last_name, height, weight)
+    def __init__(self, first_name, last_name, username):
+        super().__init__(first_name, last_name, username)
         self.privileges = Privileges()
 
 class Privileges():

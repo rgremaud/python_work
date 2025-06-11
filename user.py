@@ -1,20 +1,16 @@
 """Create users for ur site"""
-from admin import Privileges
 
 class User:
-    def __init__(self, first_name, last_name, height, weight):
+    def __init__(self, first_name, last_name, username):
         self.first_name = first_name
         self.last_name = last_name
-        self.height = height
-        self.weight = weight
+        self.username = username
         self.login_attempts = 0
-        self.privileges = Privileges()
     
     def summary(self):
         print(f"Full name: {self.first_name.title()} {self.last_name.title()}")
-        print(f"Height: {self.height}")
-        print(f"Weight: {self.weight}")
-
+        print(f"Username: {self.username}")
+              
     def greeting(self):
         print(f"Hello, {self.first_name.title()} {self.last_name.title()}!")
 
