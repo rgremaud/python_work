@@ -1,10 +1,19 @@
 from pathlib import Path
 
-path = Path('learning_python.txt')
-contents = path.read_text()
+path = Path('text_files/cats.txt')
+try:
+    contents = path.read_text()
+except FileNotFoundError:
+    print(f"The file {path} is not found")
+else: 
+    print("\nCat names:\n")
+    print(contents)
 
-lines = contents.splitlines()
-for line in contents.splitlines():
-    new_line = line.replace('Python', 'Ruby')
-    print(new_line)
-
+dog_path = Path('dogs.txt')
+try:
+    contents = dog_path.read_text()
+except FileNotFoundError:
+    pass
+else: 
+    print("\nDog names:\n")
+    print(contents)
